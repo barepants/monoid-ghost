@@ -1,0 +1,7 @@
+<nav id="site-nav" class="site-nav" role="navigation" aria-expanded="false">
+  <ul class="site-nav-list">
+    {{#foreach navigation}}
+      <li {{#if current}}class="site-nav-current"{{/if}}><a href="{{url absolute="true"}}">{{label}}</a></li>
+    {{/foreach}}
+  </ul>
+</nav>

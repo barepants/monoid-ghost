@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{#author}}
+<div class="container">
+  <div class="author {{#if cover}}has-cover{{/if}}">
+    {{#if cover}}
+      <div class="author-cover" style="background-image: url({{cover}})"></div>
+    {{/if}}
+    {{#if image}}
+      <div class="author-avatar" style="background-image: url({{image}})"></div>
+    {{/if}}
+    <h1 class="author-name">{{name}}</h1>
+    <p class="author-bio">{{bio}}</p>
+    <ul class="author-meta">
+      {{#if location}}
+        <li>
+          <span class="fa fa-map-marker"></span>
+          {{location}}
+        </li>
+      {{/if}}
+      {{#if website}}
+        <li>
+          <span class="fa fa-link"></span>
+          <a href="{{website}}">{{website}}</a>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+</div>
+{{/author}}
+
+{{> "loop"}}

@@ -1,0 +1,19 @@
+{{!< default}}
+
+{{#post}}
+
+<div class="container">
+  <article class="{{post_class}}">
+    <header class="post-header">
+      {{#if image}}
+        <div class="post-image"><img src="{{image}}" alt="" /></div>
+      {{/if}}
+      <h1 class="post-title">{{{title}}}</h1>
+    </header>
+    <div class="post-content">
+      {{content}}
+    </div>
+  </article>
+</div>
+
+{{/post}}

@@ -1,0 +1,14 @@
+{{!< default}}
+
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title"><small>Posts in</small> {{tag.name}}</h1>
+    {{#if tag.description}}
+      <div class="page-description">
+        {{tag.description}}
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+{{> "loop"}}

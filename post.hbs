@@ -1,0 +1,87 @@
+{{!< default}}
+
+{{#post}}
+
+<div class="container">
+
+  <article class="{{post_class}}">
+    <header class="post-header">
+      {{#if image}}
+        <div class="post-image"><img src="{{image}}" alt="" /></div>
+      {{/if}}
+      <h1 class="post-title">{{{title}}}</h1>
+      <ul class="post-meta">
+        <li class="post-author">by {{author}}</li>
+        <li class="post-date"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMMM D, YYYY"}}</time></li>
+        {{#if tags}}
+          <li class="post-tags">
+            <ul>
+            {{#foreach tags}}
+              <li><a href="{{url}}">{{name}}</a></li>
+            {{/foreach}}
+            </ul>
+          </li>
+        {{/if}}
+      </ul>
+    </header>
+    <div class="post-content">
+      {{content}}
+    </div>
+    <div class="share social-icons">
+      <h2 class="share-title">Share this:</h2>
+      <a href="https://twitter.com/share?text={{encode title}}&amp;url={{url absolute="true"}}"
+         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="visuallyhidden">Twitter</span>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="visuallyhidden">Facebook</span>
+      </a>
+      <a href="https://plus.google.com/share?url={{url absolute="true"}}"
+         onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="visuallyhidden">Google+</span>
+      </a>
+    </div>
+  </article>
+
+  {{#author}}
+    <div class="author {{#if image}}has-avatar{{/if}}">
+      {{#if image}}
+        <a href="{{url}}" class="author-avatar" aria-hidden="true" style="background-image: url({{image}})"></a>
+      {{/if}}
+      <h2 class="author-name"><a href="{{url}}">{{name}}</a></h2>
+      <p class="author-bio">
+        {{#if bio}}
+          {{bio}}
+        {{else}}
+          Read <a href="{{url}}">more posts</a> by this author.
+        {{/if}}
+      </p>
+    </div>
+  {{/author}}
+
+  <div id="disqus_thread"></div>
+  <script>
+    if (Monoid.config.disqus_shortname) {
+      var disqus_shortname = Monoid.config.disqus_shortname;
+      var disqus_identifier = '{{url absolute="true"}}';
+      var disqus_url = '{{url absolute="true"}}';
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    }
+  </script>
+
+  <nav class="read-next clearfix">
+    {{#next_post}}
+      <a class="read-next-newer" href="{{url}}">{{title}}</a>
+    {{/next_post}}
+    {{#prev_post}}
+      <a class="read-next-older" href="{{url}}">{{title}}</a>
+    {{/prev_post}}
+  </nav>
+
+</div>
+{{/post}}

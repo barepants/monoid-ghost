@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="post-list">
+    {{#foreach posts}}
+      <article class="{{post_class}} clearfix">
+        <header class="post-header">
+          {{#if featured}}
+            <div class="post-featured-label">Featured</div>
+          {{/if}}
+          {{#if image}}
+            <a href="{{url}}" class="post-thumbnail" aria-hidden="true" style="background-image: url({{image}})"></a>
+          {{/if}}
+          <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+        </header>
+        <div class="post-excerpt">
+          <p>{{excerpt words="26"}}</p>
+        </div>
+        <div class="post-footer">
+          <ul class="post-meta">
+            <li class="post-author">by {{author}}</li>
+            <li class="post-date"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMMM D, YYYY"}}</time></li>
+            {{#if tags}}
+              <li class="post-tags">
+                <ul>
+                {{#foreach tags}}
+                  <li><a href="{{url}}">{{name}}</a></li>
+                {{/foreach}}
+                </ul>
+              </li>
+            {{/if}}
+          </ul>
+        </div>
+      </article>
+    {{/foreach}}
+  </div>
+  {{pagination}}
+</div>

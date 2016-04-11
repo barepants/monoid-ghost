@@ -1,0 +1,25 @@
+{{!< default}}
+
+<div class="container">
+  {{#is "home"}}
+    {{#if @blog.cover}}
+      <div class="site-cover" style="background-image: url({{@blog.cover}})">
+        {{#if @blog.description}}
+          <div class="site-description">
+            <div class="vertical">{{@blog.description}}</div>
+          </div>
+        {{/if}}
+      </div>
+    {{else}}
+      {{#if @blog.description}}
+        <div class="site-description">{{@blog.description}}</div>
+      {{/if}}
+    {{/if}}
+  {{else}}
+    {{#if @blog.description}}
+      <div class="site-description">{{@blog.description}}</div>
+    {{/if}}
+  {{/is}}
+</div>
+
+{{> "loop"}}
